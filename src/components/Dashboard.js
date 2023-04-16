@@ -3,12 +3,14 @@ import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import OrgQuizzes from './OrgQuizzes'
+import OngoingQuizzes from './OngoingQuizzes'
 
 const mdTheme = createTheme();
 
 const styles = {
   container: {
-    backgroundImage: "url('https://www.investintech.com/resources/blog/wp-content/uploads/2021/09/Tech-Quiz-Test-Your-Knowledge-While-Having-Fun.jpg')",
+    // backgroundImage: "url('https://www.investintech.com/resources/blog/wp-content/uploads/2021/09/Tech-Quiz-Test-Your-Knowledge-While-Having-Fun.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     width: '100vw',
@@ -29,6 +31,7 @@ const LogoutButton = styled(Button)(styles.button);
 export default function BlankPage() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const [userData,setUserData] = useState();
   const [isLoggedIn, setIsLoggedIn] = React.useState(false); // define isLoggedIn and setIsLoggedIn here
 
   useEffect(() => {
@@ -36,6 +39,13 @@ export default function BlankPage() {
       navigate('/', { replace: true });
     }
   }, [token]);
+
+  useEffect(() => {
+    const type = localStorage.getItem('userData')
+    if(type){
+    setUserData(JSON.parse(type).type)
+  }
+  },[])
   
   function handleLogout() {
     if (localStorage.getItem('token') !== null) {
@@ -50,6 +60,9 @@ export default function BlankPage() {
     <ThemeProvider theme={mdTheme}>
       <CssBaseline />
       <Container>
+        {
+         userData && userData === "organizer"? <OrgQuizzes/>:<OngoingQuizzes/>
+        }
         {/* <LogoutButton variant="contained" onClick={handleLogout}>Logout</LogoutButton> */}
         {/* Your content here */}
       </Container>

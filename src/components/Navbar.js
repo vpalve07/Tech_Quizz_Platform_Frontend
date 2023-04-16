@@ -22,6 +22,7 @@ function ColorSchemesExample() {
         <Navbar.Brand href="/dashboard">Dashboard</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
+          {JSON.parse(userData)?.type == "organizer" ? (
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/quiz">
                 CreateQuiz
@@ -35,19 +36,23 @@ function ColorSchemesExample() {
               <Nav.Link as={Link} to="/quizQue">
                 ActivateQuiz
               </Nav.Link>
-              <Nav.Link as={Link} to="/organizerQuizzes">
+              {/* <Nav.Link as={Link} to="/organizerQuizzes">
                 organizerQuizzes
-              </Nav.Link>
+              </Nav.Link> */}
+            </Nav>
+          ) : (
+            <Nav>
               <Nav.Link as={Link} to="/leaderboard">
                 Leaderboard
               </Nav.Link>
               <Nav.Link as={Link} to="/userQuizzes">
                 userQuizzes
               </Nav.Link>
-              <Nav.Link as={Link} to="/ongoingQuizzes">
+              {/* <Nav.Link as={Link} to="/ongoingQuizzes">
                 ongoingQuizzes
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
+          )}
         </Navbar.Collapse>
         <Nav className="ml-auto">
           <Nav.Link onClick={handleLogout}>Logout</Nav.Link>

@@ -51,10 +51,10 @@ function App() {
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/quiz" element={<CreateQuiz />} />
           <Route path="/updateQuiz" element={<UpdateQuiz />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/leaderboard/:quizId" element={<Leaderboard />} />
           <Route path="/userQuizzes" element={<UserQuizzes />} />
-          <Route path="/organizerQuizzes" element={<OrgQuizzes />} />
-          <Route path="/ongoingQuizzes" element={<OngoingQuizzes />} />
+          {/* <Route path="/organizerQuizzes" element={<OrgQuizzes />} />
+          <Route path="/ongoingQuizzes" element={<OngoingQuizzes />} /> */}
           <Route path="/question" element={<GiveAns />} />
           <Route path="/startQuiz" element={<StartQuiz />} />
           <Route path="/submit" element={<Submit />} />

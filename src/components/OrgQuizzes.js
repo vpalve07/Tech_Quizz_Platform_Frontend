@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -42,6 +43,11 @@ function QuizData() {
             navigate('/', { replace: true });
         }
     }, [token]);
+
+    const handleLeaderboard = (quizId) =>{
+        console.log(quizId,"quiz")
+        navigate(`/leaderboard/${quizId}`)
+    }
 
     function handleLogout() {
         if (localStorage.getItem('token') !== null) {
@@ -86,6 +92,7 @@ function QuizData() {
                                         <TableCell style={{ textAlign: 'center' }}>{item.timeLimit}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>{item.topicTags.join(', ')}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>{item.totalScore}</TableCell>
+                                        <Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button>
                                     </TableRow>
                                 ))}
                             </TableBody>

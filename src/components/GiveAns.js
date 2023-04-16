@@ -86,7 +86,8 @@ export default function QuizQuestion() {
         resSet(response.data.data[0])
         const { question, options } = response.data.data[0];
         setQuestion(question);
-        setOptions(Object.values(options)); // Get the option values as an array
+        setOptions(Object.values(options));
+        setSelectedOption("") // Get the option values as an array
       } catch (error) {
         setCompleted(true)
         console.error(error);

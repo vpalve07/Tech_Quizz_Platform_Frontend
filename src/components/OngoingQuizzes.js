@@ -39,8 +39,11 @@ function QuizData() {
         fetchQuizData();
     }, []);
 
+    const handleLeaderboard = (quizId) =>{
+        navigate(`/leaderboard/${quizId}`)
+    }
     const handleRegistration = async (quizId) => {
-        const BACKEND_URL2 = `http://localhost:3001/regQuiz/${quizId}`;
+        const BACKEND_URL2 = `https://tech-quizz-platform.onrender.com/regQuiz/${quizId}`;
         console.log(quizId)
         const token = localStorage.getItem('token');
         try {
@@ -94,6 +97,7 @@ function QuizData() {
                                         <TableCell style={{ textAlign: 'center' }}>{item.totalScore}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>
                                             <Button onClick={() => handleRegistration(item._id)}>Register</Button>
+                                            <Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button>
                                         </TableCell>
                                     </TableRow>
                                 ))}

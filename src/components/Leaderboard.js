@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
@@ -11,15 +11,17 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+// import { useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
 
 const BACKEND_URL = "https://tech-quizz-platform.onrender.com";
 
 function Leaderboard() {
+  let { quizId } = useParams();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [leaderboardData, setLeaderboardData] = useState([]);
   const navigate = useNavigate();
-  const quizId = localStorage.getItem('quizId')
+  // const quizId = localStorage.getItem('quizId')
 
   useEffect(() => {
     const token = localStorage.getItem("token");
