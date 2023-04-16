@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function ColorSchemesExample() {
   const [counter, setCounter] = useState(0);
+  const [Token, setToken] = useState("")
+  const location = useLocation();
 
   function handleLogout() {
     if (localStorage.getItem('token') !== null) {
@@ -15,11 +17,22 @@ function ColorSchemesExample() {
   }
 
   const userData = localStorage.getItem('userData');
+  
 
+  useEffect(()=>{
+    const token = localStorage.getItem('token')
+    setToken(token)
+  },[location.pathname])
+  console.log(location.pathname)
+  
   return (
+    <>
     <Navbar key={`navbar-${counter}`} collapseOnSelect bg="dark" variant="dark" expand="lg">
       <Container fluid>
-        <Navbar.Brand to="/dashboard">Dashboard</Navbar.Brand>
+        {Token?<>
+          <Nav.Link as={Link} to="/dashboard" style={{color:'white'}}>
+                Dashboard
+              </Nav.Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           {JSON.parse(userData)?.type == "organizer" ? (
@@ -36,29 +49,18 @@ function ColorSchemesExample() {
               <Nav.Link as={Link} to="/quizQue">
                 ActivateQuiz
               </Nav.Link>
-              {/* <Nav.Link as={Link} to="/organizerQuizzes">
-                organizerQuizzes
-              </Nav.Link> */}
             </Nav>
-          ) : (
-            <Nav>
-              <Nav.Link as={Link} to="/leaderboard">
-                Leaderboard
-              </Nav.Link>
-              <Nav.Link as={Link} to="/userQuizzes">
-                userQuizzes
-              </Nav.Link>
-              {/* <Nav.Link as={Link} to="/ongoingQuizzes">
-                ongoingQuizzes
-              </Nav.Link> */}
-            </Nav>
-          )}
+          ) : 
+            null
+          }
         </Navbar.Collapse>
         <Nav className="ml-auto">
           <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-        </Nav>
+        </Nav></>:null}
+        
       </Container>
     </Navbar>
+    </>
   );
 }
 

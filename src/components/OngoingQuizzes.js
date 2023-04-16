@@ -83,7 +83,8 @@ function QuizData() {
                                     <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>timeLimit</TableCell>
                                     <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>topicTags</TableCell>
                                     <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>totalScore</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Register</TableCell>
+                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Actions</TableCell>
+                                    
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -98,7 +99,8 @@ function QuizData() {
                                         <TableCell style={{ textAlign: 'center' }}>
                                             <Button onClick={() => handleRegistration(item._id)}>Register</Button>
                                             <Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button>
-                                        </TableCell>
+                                            </TableCell>
+                                
                                     </TableRow>
                                 ))}
                             </TableBody>
