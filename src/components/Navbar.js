@@ -19,7 +19,7 @@ function ColorSchemesExample() {
   return (
     <Navbar key={`navbar-${counter}`} collapseOnSelect bg="dark" variant="dark" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/dashboard">Dashboard</Navbar.Brand>
+        <Navbar.Brand to="/dashboard">Dashboard</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           {JSON.parse(userData)?.type == "organizer" ? (
