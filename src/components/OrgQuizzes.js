@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button'
+import { Button } from "react-bootstrap"
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -44,8 +44,18 @@ function QuizData() {
         }
     }, [token]);
 
-    const handleLeaderboard = (quizId) =>{
-        console.log(quizId,"quiz")
+    const handleUpdate = (quizId) => {
+        // console.log(quizId, "quiz")
+        navigate(`/updateQuiz/${quizId}`)
+    }
+
+    const handleAddQuestion = (quizId) => {
+        console.log(quizId, "quiz")
+        navigate(`/quizQue/${quizId}`)
+    }
+
+    const handleLeaderboard = (quizId) => {
+        // console.log(quizId, "quiz")
         navigate(`/leaderboard/${quizId}`)
     }
 
@@ -63,40 +73,44 @@ function QuizData() {
         <Grid container spacing={2}>
             <Grid item xs={12}>
                 <Paper style={{ padding: '20px', margin: '20px 0' }}>
-                    <Box display="flex" justifyContent="flex-end">
-                        {/* <Link className="logoutBotton" to="/">
-              <Button variant="contained" onClick={handleLogout}>
-                Log Out
-              </Button>
-            </Link> */}
-                    </Box>
+                    <Box display="flex" justifyContent="flex-end" />
                     <h1>Organizer Quizzes</h1><br />
                     {quizData.length > 0 ? (
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>isActive</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>quizType</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>quizName</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>timeLimit</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>topicTags</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>totalScore</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>Update Quizz</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>Add Question</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>isActive</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>Quiz Type</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>Quiz Name</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>Time Limit</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>Topic Tags</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>Total Score</TableCell>
+                                    <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>Leaderboard</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {quizData.map((item, index) => (
                                     <TableRow key={index}>
-                                        <TableCell style={{ textAlign: 'center' }}>{item.isActive ? 'Active' : 'Inactive'}</TableCell>
-                                        <TableCell style={{ textAlign: 'center' }}>{item.quizName}</TableCell>
-                                        <TableCell style={{ textAlign: 'center' }}>{item.quizType}</TableCell>
-                                        <TableCell style={{ textAlign: 'center' }}>{item.timeLimit}</TableCell>
-                                        <TableCell style={{ textAlign: 'center' }}>{item.topicTags.join(', ')}</TableCell>
-                                        <TableCell style={{ textAlign: 'center' }}>{item.totalScore}</TableCell>
-                                        <Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>
+                                            <Button onClick={() => handleUpdate(item._id)}>Update</Button>
+                                        </TableCell>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>
+                                            <Button onClick={() => handleAddQuestion(item._id)}>AddQue/ActivateQuiz</Button>
+                                        </TableCell>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.isActive ? 'Active' : 'Inactive'}</TableCell>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.quizName}</TableCell>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.quizType}</TableCell>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.timeLimit}</TableCell>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.topicTags.join(', ')}</TableCell>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.totalScore}</TableCell>
+                                        <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>
+                                            <Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button>
+                                        </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
-
                         </Table>
                     ) : (
                         <p>No quiz data available.</p>

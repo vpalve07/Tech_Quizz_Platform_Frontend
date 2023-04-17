@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import axios from 'axios';
 
-export default function InputWithIcon() {
+const BACKEND_URL = "https://tech-quizz-platform.onrender.com";
+
+export default function AppQuestion() {
+  let { quizId } = useParams();
+  console.log(quizId)
   const location = useLocation();
 
   // Define a default value for propData
@@ -18,15 +22,15 @@ export default function InputWithIcon() {
   console.log(propData);
 
   // Use the quizId passed via propData, or use the stored quizId from the previous props
-  const quizId = propData.QuizId || localStorage.getItem('quizId');
+  // const quizId = propData.QuizId || localStorage.getItem('quizId');
 
   // Store the quizId for future use
-  localStorage.setItem('quizId', quizId);
+  // localStorage.setItem('quizId', quizId);
 
 
   // Define the URL for the backend API
-  const BACKEND_URL = `https://tech-quizz-platform.onrender.com/quizQue/${quizId}`;
-  const BACKEND_URL2 = `https://tech-quizz-platform.onrender.com/activateQuiz/${quizId}`;
+  // const BACKEND_URL = `https://tech-quizz-platform.onrender.com/quizQue/${quizId}`;
+  // const BACKEND_URL2 = `https://tech-quizz-platform.onrender.com/activateQuiz/${quizId}`;
 
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -45,6 +49,7 @@ export default function InputWithIcon() {
       localStorage.removeItem('token');
       
     localStorage.removeItem('quizId');
+    localStorage.removeItem('userData');
       navigate('/');
       setIsLoggedIn(false);
     }
@@ -63,7 +68,7 @@ export default function InputWithIcon() {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        BACKEND_URL,
+        `${BACKEND_URL}/quizQue/${quizId}`,
         {
           question,
           options: {
@@ -82,7 +87,7 @@ export default function InputWithIcon() {
         }
       );
       setSuccessMessage(response.data.message);
-      navigate('/quizQue');
+      navigate(`/quizQue/${quizId}`);
     } catch (error) {
       console.error(error);
       setError(error);
@@ -94,7 +99,7 @@ export default function InputWithIcon() {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        BACKEND_URL2,
+        `${BACKEND_URL}/activateQuiz/${quizId}`,
         {},
         {
           headers: {

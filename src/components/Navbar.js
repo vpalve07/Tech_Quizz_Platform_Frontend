@@ -40,7 +40,7 @@ function ColorSchemesExample() {
               <Nav.Link as={Link} to="/quiz">
                 CreateQuiz
               </Nav.Link>
-              <Nav.Link as={Link} to="/updateQuiz">
+              {/* <Nav.Link as={Link} to="/updateQuiz">
                 UpdateQuiz
               </Nav.Link>
               <Nav.Link as={Link} to="/quizQue">
@@ -48,7 +48,7 @@ function ColorSchemesExample() {
               </Nav.Link>
               <Nav.Link as={Link} to="/quizQue">
                 ActivateQuiz
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
           ) : 
             null

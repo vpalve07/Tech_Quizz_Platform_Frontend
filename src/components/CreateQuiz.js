@@ -40,6 +40,7 @@ export default function SignInSide() {
       localStorage.removeItem('token');
       
     localStorage.removeItem('quizId');
+    localStorage.removeItem('userData');
       navigate("/")
       setIsLoggedIn(false); 
     }
@@ -64,7 +65,7 @@ export default function SignInSide() {
         }
       );
       const state = { propData: response.data }
-      navigate('/quizQue',{ state });
+      navigate('/dashboard',{ state });
     } catch (error) {
       console.error(error);
       setError(error);

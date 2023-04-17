@@ -17,7 +17,7 @@ import QuizIcon from '@mui/icons-material/Quiz';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import Alert from '@mui/material/Alert';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 
 const theme = createTheme();
 
@@ -40,12 +40,14 @@ export default function SignInSide() {
     if (localStorage.getItem('token') !== null) {
       localStorage.removeItem('token');
       localStorage.removeItem('quizId');
+      localStorage.removeItem('userData');
       setIsLoggedIn(false); 
       navigate("/")
     }
   }
-  const quizId = localStorage.getItem('quizId')
-  console.log(typeof quizId)
+  // const quizId = localStorage.getItem('quizId')
+  // console.log(typeof quizId)
+  let { quizId } = useParams();
   const BACKEND_URL = `https://tech-quizz-platform.onrender.com/updateQuiz/${quizId}`;
 
   const handleSubmit = async (event) => {
@@ -67,7 +69,7 @@ export default function SignInSide() {
         }
       );
       const state = { propData: response.data }
-      navigate('/quizQue',{ state });
+      navigate('/dashboard',{ state });
     } catch (error) {
       console.error(error);
       setError(error);

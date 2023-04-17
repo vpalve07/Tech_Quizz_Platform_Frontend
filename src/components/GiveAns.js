@@ -19,7 +19,7 @@ export default function QuizQuestion() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
-  const [completed,setCompleted] = useState(false)
+  const [completed, setCompleted] = useState(false)
   const token = localStorage.getItem('token');
   const quizId = localStorage.getItem('quizId');
   const BACKEND_URL = `https://tech-quizz-platform.onrender.com/question/${quizId}?page=${page}`;
@@ -34,6 +34,7 @@ export default function QuizQuestion() {
   function handleLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('quizId');
+    localStorage.removeItem('userData');
     navigate('/');
     setIsLoggedIn(false);
   }
@@ -56,7 +57,7 @@ export default function QuizQuestion() {
         }
       );
       const state = { propData: response.data }
-      navigate('/submit',{ state });
+      navigate('/submit', { state });
     } catch (error) {
       console.error(error);
       setError(error);
@@ -78,11 +79,11 @@ export default function QuizQuestion() {
             }
 
           });
-          console.log(response.data)
-          if(response.data.message=="Quiz completed"){
-            setCompleted(true)
-          }
-          console.log(completed)
+        console.log(response.data)
+        if (response.data.message == "Quiz completed") {
+          setCompleted(true)
+        }
+        console.log(completed)
         resSet(response.data.data[0])
         const { question, options } = response.data.data[0];
         setQuestion(question);
@@ -142,7 +143,7 @@ export default function QuizQuestion() {
         sx={{
           backgroundColor: '#fff',
           padding: '30px',
-          width:  '90%',
+          width: '90%',
           borderRadius: '10px',
         }} >
         <Box
@@ -158,8 +159,12 @@ export default function QuizQuestion() {
             variant="filled"
             sx={{ width: '100%', marginBottom: '30px' }}
             value={question}
-            disabled
+            InputProps={{
+              readOnly: true,
+              style: { cursor: 'default', backgroundColor: '#f9f9f9' }
+            }}
           />
+
           <RadioGroup
             value={selectedOption}
             onChange={handleOptionChange}
@@ -188,9 +193,9 @@ export default function QuizQuestion() {
             </Button>)}
           </Box>
         </Box>
-            {error && (
-              <Alert severity="error">{error.response.data.message || 'An unknown error occurred'}</Alert>
-            )}
+        {error && (
+          <Alert severity="error">{error.response.data.message || 'An unknown error occurred'}</Alert>
+        )}
         <Box sx={{ marginTop: '30px' }}>
         </Box>
       </Box>

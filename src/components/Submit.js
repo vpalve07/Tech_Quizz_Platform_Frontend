@@ -50,6 +50,7 @@ function Submit() {
     if (localStorage.getItem("token") !== null) {
       localStorage.removeItem("token");
       localStorage.removeItem("quizId");
+      localStorage.removeItem('userData');
       navigate("/");
       setIsLoggedIn(false);
     }

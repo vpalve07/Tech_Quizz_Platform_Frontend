@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
@@ -23,6 +23,13 @@ export default function SignUp() {
   const [type,setType] = useState("");
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
+
+  const checkToken = localStorage.getItem("token")
+  useEffect(() => {
+    if (checkToken) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [checkToken]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

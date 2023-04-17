@@ -77,30 +77,25 @@ function QuizData() {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    {/* <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>isActive</TableCell> */}
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>quizName</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>quizType</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>timeLimit</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>topicTags</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>totalScore</TableCell>
-                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Actions</TableCell>
-                                    
+                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Quiz Name</TableCell>
+                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Quiz Type</TableCell>
+                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Time Limit</TableCell>
+                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Topic Tags</TableCell>
+                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Total Score</TableCell>
+                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Register</TableCell>
+                                    <TableCell style={{ padding: '0 50px', textAlign: 'center' }}>Leaderboard</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {quizData.map((item, index) => (
                                     <TableRow key={index}>
-                                        {/* <TableCell style={{ textAlign: 'center' }}>{item.isActive ? 'Active' : 'Inactive'}</TableCell> */}
                                         <TableCell style={{ textAlign: 'center' }}>{item.quizName}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>{item.quizType}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>{item.timeLimit}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>{item.topicTags.join(', ')}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>{item.totalScore}</TableCell>
-                                        <TableCell style={{ textAlign: 'center' }}>
-                                            <Button onClick={() => handleRegistration(item._id)}>Register</Button>
-                                            <Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button>
-                                            </TableCell>
-                                
+                                        <TableCell style={{ textAlign: 'center' }}><Button onClick={() => handleRegistration(item._id)}>Register</Button></TableCell>
+                                        <TableCell style={{ textAlign: 'center' }}><Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button></TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

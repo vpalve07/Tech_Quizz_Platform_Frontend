@@ -50,7 +50,7 @@ function App() {
           <Route path="/resetPassword" element={<ResetPass />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/quiz" element={<CreateQuiz />} />
-          <Route path="/updateQuiz" element={<UpdateQuiz />} />
+          <Route path="/updateQuiz/:quizId" element={<UpdateQuiz />} />
           <Route path="/leaderboard/:quizId" element={<Leaderboard />} />
           <Route path="/userQuizzes" element={<UserQuizzes />} />
           {/* <Route path="/organizerQuizzes" element={<OrgQuizzes />} />
@@ -59,7 +59,7 @@ function App() {
           <Route path="/startQuiz" element={<StartQuiz />} />
           <Route path="/submit" element={<Submit />} />
           <Route
-            path="/quizQue"
+            path="/quizQue/:quizId"
             element={<AddQuestions/>}
           />
         </Routes>

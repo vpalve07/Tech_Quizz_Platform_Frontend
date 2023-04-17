@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -23,6 +24,13 @@ export default function ForgetPass() {
   const [propData , setPropData] = React.useState("")
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
+
+  const checkToken = localStorage.getItem("token")
+  useEffect(() => {
+    if (checkToken) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [checkToken]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
