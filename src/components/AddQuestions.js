@@ -13,25 +13,11 @@ export default function AppQuestion() {
   console.log(quizId)
   const location = useLocation();
 
-  // Define a default value for propData
   const defaultPropData = { QuizId: null };
 
-  // If propData is not present, use the default value
   const propData = location.state?.propData || defaultPropData;
 
   console.log(propData);
-
-  // Use the quizId passed via propData, or use the stored quizId from the previous props
-  // const quizId = propData.QuizId || localStorage.getItem('quizId');
-
-  // Store the quizId for future use
-  // localStorage.setItem('quizId', quizId);
-
-
-  // Define the URL for the backend API
-  // const BACKEND_URL = `https://tech-quizz-platform.onrender.com/quizQue/${quizId}`;
-  // const BACKEND_URL2 = `https://tech-quizz-platform.onrender.com/activateQuiz/${quizId}`;
-
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);

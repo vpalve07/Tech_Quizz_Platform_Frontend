@@ -31,8 +31,6 @@ const Container = styled('div')(styles.container);
 const LogoutButton = styled(Button)(styles.button);
 
 export default function StartQuiz() {
-  // const location = useLocation();
-  // console.log(location.state.propData.id)
   const quizId = localStorage.getItem('quizId');
   console.log(quizId)
   const BACKEND_URL = `https://tech-quizz-platform.onrender.com/startQuiz/${quizId}`;

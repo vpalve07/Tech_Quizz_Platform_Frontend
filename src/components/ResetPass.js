@@ -3,9 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -16,14 +13,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import { useLocation } from 'react-router-dom';
-// import {nextPageData} from "./ForgetPass"
 
 const theme = createTheme();
 const BACKEND_URL = 'https://tech-quizz-platform.onrender.com/resetPassword';
 
 export default function ResetPassword() {
   const location = useLocation();
-  // console.log(location.state.propData.data.email)
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
   const { search } = useLocation();
@@ -104,7 +99,6 @@ export default function ResetPassword() {
                     readOnly: true,
                   }}
                   variant="filled"
-                // onChange={(e) => setSecretQuestion(e.target.value)}
                 />
               </Grid>
 

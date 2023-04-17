@@ -100,32 +100,6 @@ export default function QuizQuestion() {
 
   const handleNextClick = async () => {
     setPage((page) => page + 1);
-
-    try {
-      // const response = await axios.post(
-      //   BACKEND_URL,
-      //   {
-      //     questionId: res._id,
-      //     answer: selectedOption,
-      //     marks: res.marks
-      //   },
-      //   {
-      //     headers: {
-      //       'x-api-key': token
-      //     }
-      //   }
-      // );
-      // console.log(response.data.data[0])
-      // resSet(response.data.data[0]);
-      // const { question, options } = response.data;
-      // setQuestion(question);
-      // setOptions(Object.values(options)); // Get the option values as an array
-      // setSelectedOption('');
-      // navigate(`/quiz?page=${page + 1}`);
-    } catch (error) {
-      // console.error(error);
-      // setError(error);
-    }
   };
 
   return (

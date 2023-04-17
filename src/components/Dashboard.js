@@ -64,8 +64,6 @@ export default function BlankPage() {
         {
          userData && userData === "organizer"? <OrgQuizzes/>:<OngoingQuizzes/>
         }
-        {/* <LogoutButton variant="contained" onClick={handleLogout}>Logout</LogoutButton> */}
-        {/* Your content here */}
       </Container>
     </ThemeProvider>
   );

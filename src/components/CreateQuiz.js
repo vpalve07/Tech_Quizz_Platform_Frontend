@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Select } from '@mui/material';
+import {MenuItem} from '@mui/material';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { deepOrange, green } from '@mui/material/colors';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import QuizIcon from '@mui/icons-material/Quiz';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
@@ -23,7 +18,6 @@ const theme = createTheme();
 const BACKEND_URL = 'https://tech-quizz-platform.onrender.com/quiz';
 
 export default function SignInSide() {
-  // const [propData , setPropData] = React.useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('token');
@@ -34,15 +28,15 @@ export default function SignInSide() {
       navigate('/', { replace: true });
     }
   }, [token]);
-  
+
   function handleLogout() {
     if (localStorage.getItem('token') !== null) {
       localStorage.removeItem('token');
-      
-    localStorage.removeItem('quizId');
-    localStorage.removeItem('userData');
+
+      localStorage.removeItem('quizId');
+      localStorage.removeItem('userData');
       navigate("/")
-      setIsLoggedIn(false); 
+      setIsLoggedIn(false);
     }
   }
 
@@ -65,7 +59,7 @@ export default function SignInSide() {
         }
       );
       const state = { propData: response.data }
-      navigate('/dashboard',{ state });
+      navigate('/dashboard', { state });
     } catch (error) {
       console.error(error);
       setError(error);
@@ -74,16 +68,7 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={theme}>
-        {/* <Button variant="contained">Contained</Button> */}
-        {/* <Link className = "logoutBotton" to="/">
-            <button type="button" className="btn btn-outline-primary" onClick={handleLogout} >Log Out</button>   
-            </Link> */}
-            <Box position="absolute" top={0} right={0} m={2}>
-        {/* <Link className="logoutBotton" to="/">
-          <Button variant="contained" onClick={handleLogout}>
-            Log Out
-          </Button>
-        </Link> */}
+      <Box position="absolute" top={0} right={0} m={2}>
       </Box>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
@@ -111,7 +96,7 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            <QuizIcon/>
+            <QuizIcon />
             <Typography component="h1" variant="h5">
               Create Quiz
             </Typography>
@@ -126,7 +111,7 @@ export default function SignInSide() {
                 autoComplete="quizName"
                 autoFocus
               />
-              <TextField
+              {/* <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -135,13 +120,24 @@ export default function SignInSide() {
                 type="quizType"
                 id="quizType"
                 autoComplete="quizType"
-              />
+              /> */}
+              <Select
+                margin="normal"
+                required
+                fullWidth
+                name="quizType"
+                label="Quiz Type"
+                id="quizType"
+                value="MCQ"
+              >
+                <MenuItem value="MCQ">MCQ</MenuItem>
+              </Select>
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 name="timeLimit"
-                label="Time Limit"
+                label="Time Limit in Minutes"
                 type="timeLimit"
                 id="timeLimit"
                 autoComplete="timeLimit"
@@ -165,8 +161,8 @@ export default function SignInSide() {
                 Create Quiz
               </Button>
               {error && (
-              <Alert severity="error">{error.response.data.message || 'An unknown error occurred'}</Alert>
-            )}
+                <Alert severity="error">{error.response.data.message || 'An unknown error occurred'}</Alert>
+              )}
             </Box>
           </Box>
         </Grid>

@@ -5,8 +5,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import { Link } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -48,7 +46,6 @@ export default function SignIn() {
             'x-api-key': token,
           },
       })
-      // console.log(response2.data)
       localStorage.setItem('userData',JSON.stringify(response2.data))
 
       if (location.state && location.state.from) {

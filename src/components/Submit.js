@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 
@@ -61,28 +56,12 @@ function Submit() {
       sx={{ display: "flex", flexDirection: "column", alignItems: "center", pt: 4 }}
     >
       <Box sx={{ position: "absolute", top: 0, right: 0, m: 2 }}>
-        {/* <Link className="logoutButton" to="/">
-          <Button variant="contained" onClick={handleLogout}>
-            Log Out
-          </Button>
-        </Link> */}
       </Box>
       <Typography variant="h3" sx={{ mb: 2 }}>
         Your Final Score
       </Typography>
       <TableContainer component={Paper} sx={{ width: "80%", mb: 4 }}>
         <Table sx={{ minWidth: 650 }}>
-          {/* <TableHead>
-            <TableRow>
-
-              <TableCell>Total Quiz Score</TableCell>
-              <TableCell>My Total Score</TableCell>
-              <TableCell>Total Correct Answer</TableCell>
-              <TableCell>Total Wrong Answer</TableCell>
-              <TableCell>Total Questions</TableCell>
-              <TableCell>Total Questions Attempted</TableCell>
-            </TableRow>
-          </TableHead> */}
           <TableBody>
             {leaderboardData.map((item, index) => (
               <React.Fragment key={index}>

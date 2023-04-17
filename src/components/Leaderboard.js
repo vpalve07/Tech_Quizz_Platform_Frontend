@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,7 +9,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-// import { useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
 
 const BACKEND_URL = "https://tech-quizz-platform.onrender.com";
@@ -21,7 +18,6 @@ function Leaderboard() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [leaderboardData, setLeaderboardData] = useState([]);
   const navigate = useNavigate();
-  // const quizId = localStorage.getItem('quizId')
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -57,11 +53,7 @@ function Leaderboard() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', pt: 4 }}>
       <Box sx={{ position: 'absolute', top: 0, right: 0, m: 2 }}>
-        {/* <Link className="logoutButton" to="/">
-          <Button variant="contained" onClick={handleLogout}>
-            Log Out
-          </Button>
-        </Link> */}
+       
       </Box>
       <Typography variant="h3" sx={{ mb: 2 }}>
         Leaderboard
