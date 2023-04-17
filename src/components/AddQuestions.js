@@ -23,6 +23,7 @@ export default function InputWithIcon() {
   // Store the quizId for future use
   localStorage.setItem('quizId', quizId);
 
+
   // Define the URL for the backend API
   const BACKEND_URL = `https://tech-quizz-platform.onrender.com/quizQue/${quizId}`;
   const BACKEND_URL2 = `https://tech-quizz-platform.onrender.com/activateQuiz/${quizId}`;

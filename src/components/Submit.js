@@ -89,7 +89,7 @@ function Submit() {
                 <Typography variant="subtitle1">{`My Total Score: ${item.myTotalScore}`}</Typography>
                 <Typography variant="subtitle1">{`Total Correct Answer: ${item.totalCorrectAnswer}`}</Typography>
                 <Typography variant="subtitle1">{`Total Wrong Answer: ${item.totalWrongAnswer}`}</Typography>
-                <Typography variant="subtitle1">{`Total Questions: ${item.totalQuestions}`}</Typography>
+                {/* <Typography variant="subtitle1">{`Total Questions: ${item.totalQuestions}`}</Typography> */}
                 <Typography variant="subtitle1">{`Total Questions Attempted: ${item.totalQuestionsAttempted}`}</Typography>
               </React.Fragment>
             ))}

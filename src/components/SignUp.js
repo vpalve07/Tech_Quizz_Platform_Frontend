@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
+import { MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -18,6 +20,7 @@ const theme = createTheme();
 const BACKEND_URL = 'https://tech-quizz-platform.onrender.com/signUp';
 
 export default function SignUp() {
+  const [type,setType] = useState("");
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
 
@@ -27,7 +30,7 @@ export default function SignUp() {
     const name = data.get('name');
     const email = data.get('email');
     const password = data.get('password');
-    const type = data.get('type');
+    // const type = data.get('type');
     const secretQuestion = {
       question: data.get('secretQuestion'),
       answer: data.get('answer'),
@@ -95,7 +98,7 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                {/* <TextField
                   required
                   fullWidth
                   name="type"
@@ -103,7 +106,20 @@ export default function SignUp() {
                   type="type"
                   id="type"
                   autoComplete="type"
-                />
+                /> */}
+                <TextField
+                  required
+                  fullWidth
+                  name="type"
+                  label="Type"
+                  select
+                  id="type"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                >
+                  <MenuItem value="jobSeeker">Job Seeker</MenuItem>
+                  <MenuItem value="organizer">Organizer</MenuItem>
+                </TextField>
               </Grid>
               <Grid item xs={12}>
                 <TextField

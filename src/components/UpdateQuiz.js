@@ -20,7 +20,7 @@ import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
-const BACKEND_URL = 'https://tech-quizz-platform.onrender.com/quiz';
+
 
 export default function SignInSide() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,6 +44,9 @@ export default function SignInSide() {
       navigate("/")
     }
   }
+  const quizId = localStorage.getItem('quizId')
+  console.log(typeof quizId)
+  const BACKEND_URL = `https://tech-quizz-platform.onrender.com/updateQuiz/${quizId}`;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
