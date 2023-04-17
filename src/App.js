@@ -18,6 +18,7 @@ import OngoingQuizzes from "./components/OngoingQuizzes"
 import StartQuiz from "./components/StartQuiz"
 import Submit from "./components/Submit"
 import Navbar from "./components/Navbar"
+import UserDetails from "./components/UserDetails"
 
 import { useState } from "react";
 
@@ -58,6 +59,7 @@ function App() {
           <Route path="/question" element={<GiveAns />} />
           <Route path="/startQuiz" element={<StartQuiz />} />
           <Route path="/submit" element={<Submit />} />
+          <Route path="/userDetails" element={<UserDetails />} />
           <Route
             path="/quizQue/:quizId"
             element={<AddQuestions/>}
