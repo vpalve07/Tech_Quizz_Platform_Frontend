@@ -28,7 +28,7 @@ const styles = {
 const Container = styled('div')(styles.container);
 const LogoutButton = styled(Button)(styles.button);
 
-export default function BlankPage() {
+export default function Dashboard() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const [userData,setUserData] = useState();

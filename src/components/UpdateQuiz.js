@@ -16,7 +16,7 @@ import { useNavigate,useParams } from 'react-router-dom';
 const theme = createTheme();
 
 
-export default function SignInSide() {
+export default function UpdateQuiz() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('token');

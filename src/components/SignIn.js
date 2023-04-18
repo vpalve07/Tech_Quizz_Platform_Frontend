@@ -24,6 +24,7 @@ export default function SignIn() {
   const location = useLocation();
   const [token, setToken] = useState(null);
   const checkToken = localStorage.getItem("token")
+  
   useEffect(() => {
     if (checkToken) {
       navigate('/dashboard', { replace: true });

@@ -22,7 +22,7 @@ export default function QuizQuestion() {
   const [completed, setCompleted] = useState(false)
   const token = localStorage.getItem('token');
   const quizId = localStorage.getItem('quizId');
-  const BACKEND_URL = `https://tech-quizz-platform.onrender.com/question/${quizId}?page=${page}`;
+  const BACKEND_URL = `http://localhost:3001/question/${quizId}?page=${page}`;
   const BACKEND_URL2 = `https://tech-quizz-platform.onrender.com/submit/${quizId}`;
 
   useEffect(() => {
@@ -79,7 +79,10 @@ export default function QuizQuestion() {
             }
 
           });
-        console.log(response.data)
+        if(response.data.timer<=0){
+          let state = { propData: response.data }
+          navigate("/submit",{state})
+        }
         if (response.data.message == "Quiz completed") {
           setCompleted(true)
         }

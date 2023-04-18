@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 const theme = createTheme();
 const BACKEND_URL = 'https://tech-quizz-platform.onrender.com/quiz';
 
-export default function SignInSide() {
+export default function CreateQuiz() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('token');
