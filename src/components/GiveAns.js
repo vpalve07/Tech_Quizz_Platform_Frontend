@@ -20,6 +20,7 @@ export default function QuizQuestion() {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [completed, setCompleted] = useState(false)
+  const [timeLeft, setTimeLeft] = useState(location.state.propData.time*60);
   const token = localStorage.getItem('token');
   const quizId = localStorage.getItem('quizId');
   const BACKEND_URL = `http://localhost:3001/question/${quizId}?page=${page}`;
@@ -101,6 +102,23 @@ export default function QuizQuestion() {
     fetchData();
   }, [BACKEND_URL, token]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      setTimeLeft(0)
+    }
+  }, [timeLeft]);
+
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
   const handleNextClick = async () => {
     setPage((page) => page + 1);
   };
@@ -131,6 +149,9 @@ export default function QuizQuestion() {
             width: '100%',
           }}
         >
+          <div>
+      {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+    </div>
           <TextField
             id="question"
             variant="filled"

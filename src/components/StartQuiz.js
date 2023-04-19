@@ -33,7 +33,7 @@ const LogoutButton = styled(Button)(styles.button);
 export default function StartQuiz() {
   const quizId = localStorage.getItem('quizId');
   console.log(quizId)
-  const BACKEND_URL = `https://tech-quizz-platform.onrender.com/startQuiz/${quizId}`;
+  const BACKEND_URL = `http://localhost:3001/startQuiz/${quizId}`;
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const [error, setError] = useState(null);
@@ -45,6 +45,7 @@ export default function StartQuiz() {
       navigate('/', { replace: true });
     }
   }, [token]);
+
 
   function handleLogout() {
     if (localStorage.getItem('token') !== null) {
@@ -68,8 +69,9 @@ export default function StartQuiz() {
           },
         }
       );
+      console.log(response)
       const state = { propData: response.data }
-      navigate('/question',{state});
+      navigate('/question', { state });
       setSuccess('Quiz started successfully!');
     } catch (error) {
       console.error(error);
@@ -86,8 +88,8 @@ export default function StartQuiz() {
     <ThemeProvider theme={mdTheme}>
       <CssBaseline />
       {error && (
-              <Alert severity="error">{error.response.data.message || 'An unknown error occurred'}</Alert>
-            )}
+        <Alert severity="error">{error.response.data.message || 'An unknown error occurred'}</Alert>
+      )}
       <Container>
         <Button variant="primary" onClick={handleSubmit}>Start Quiz</Button>
       </Container>
