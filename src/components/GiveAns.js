@@ -23,7 +23,7 @@ export default function QuizQuestion() {
   const [timeLeft, setTimeLeft] = useState(location.state.propData.time*60);
   const token = localStorage.getItem('token');
   const quizId = localStorage.getItem('quizId');
-  const BACKEND_URL = `http://localhost:3001/question/${quizId}?page=${page}`;
+  const BACKEND_URL = `https://tech-quizz-platform.onrender.com/question/${quizId}?page=${page}`;
   const BACKEND_URL2 = `https://tech-quizz-platform.onrender.com/submit/${quizId}`;
 
   useEffect(() => {

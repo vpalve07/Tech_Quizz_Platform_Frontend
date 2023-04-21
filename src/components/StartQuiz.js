@@ -33,7 +33,7 @@ const LogoutButton = styled(Button)(styles.button);
 export default function StartQuiz() {
   const quizId = localStorage.getItem('quizId');
   console.log(quizId)
-  const BACKEND_URL = `http://localhost:3001/startQuiz/${quizId}`;
+  const BACKEND_URL = `https://tech-quizz-platform.onrender.com/startQuiz/${quizId}`;
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const [error, setError] = useState(null);
