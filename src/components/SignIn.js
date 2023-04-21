@@ -72,9 +72,14 @@ export default function SignIn() {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              backgroundColor: 'rgba(255, 255, 255, 0.7)',
+              backdropFilter: 'blur(10px)',
+              padding: '40px',
+              borderRadius: '20px',
+              boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>

@@ -13,7 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import axios from 'axios';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 
 const theme = createTheme();
@@ -58,10 +58,15 @@ export default function SignUp() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            marginTop: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              backgroundColor: 'rgba(255, 255, 255, 0.7)',
+              backdropFilter: 'blur(10px)',
+              padding: '40px',
+              borderRadius: '20px',
+              boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>

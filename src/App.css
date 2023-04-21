@@ -151,9 +151,9 @@ button {
 }
 
 body {
-  background: linear-gradient(-38deg, rgb(249, 155, 249), rgb(2, 225, 237));
+  background: linear-gradient(-38deg, rgb(249, 155, 249), rgb(1, 107, 112));
   background-size: 200% 200%;
-  animation: verticalBreathing 15s ease infinite;
+  /* animation: verticalBreathing 15s ease infinite; */
   height: 100vh;
   overflow: hidden;
   overflow-y: scroll;
