@@ -48,7 +48,6 @@ export default function QuizQuestion() {
   const handleSubmit = async (event) => {
     // event.preventDefault();
     try {
-      console.log("InSubmit")
       const response = await axios.get(
         BACKEND_URL2,
         {
@@ -112,9 +111,27 @@ export default function QuizQuestion() {
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      setTimeLeft(0)
+      setTimeLeft(0);
+      const submitQuiz = async () => {
+        try {
+          const response = await axios.get(
+            BACKEND_URL2,
+            {
+              headers: {
+                'x-api-key': token,
+              },
+            }
+          );
+          navigate('/submit', { state: { propData: response.data } });
+        } catch (error) {
+          console.error(error);
+          setError(error);
+        }
+      };
+      submitQuiz();
     }
-  }, [timeLeft]);
+  }, [timeLeft, BACKEND_URL2, navigate, token]);
+  
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
