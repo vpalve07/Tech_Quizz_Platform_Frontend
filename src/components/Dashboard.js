@@ -36,7 +36,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!token) {
-      navigate('/', { replace: true });
+      navigate('/signIn', { replace: true });
     }
   }, [token]);
 
@@ -52,7 +52,7 @@ export default function Dashboard() {
       localStorage.removeItem('token');
       localStorage.removeItem('quizId');
       localStorage.removeItem('userData');
-      navigate("/")
+      navigate("/signIn")
       setIsLoggedIn(false); 
     }
   }

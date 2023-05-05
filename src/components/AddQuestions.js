@@ -26,7 +26,7 @@ export default function AppQuestion() {
 
   useEffect(() => {
     if (!token) {
-      navigate('/', { replace: true });
+      navigate('/signIn', { replace: true });
     }
   }, [token, navigate]);
 
@@ -36,7 +36,7 @@ export default function AppQuestion() {
       
     localStorage.removeItem('quizId');
     localStorage.removeItem('userData');
-      navigate('/');
+      navigate('/signIn');
       setIsLoggedIn(false);
     }
   }

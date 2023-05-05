@@ -24,7 +24,7 @@ export default function UpdateQuiz() {
 
   useEffect(() => {
     if (!token) {
-      navigate('/', { replace: true });
+      navigate('/signIn', { replace: true });
     } else {
       setIsLoggedIn(true);
     }
@@ -36,7 +36,7 @@ export default function UpdateQuiz() {
       localStorage.removeItem('quizId');
       localStorage.removeItem('userData');
       setIsLoggedIn(false); 
-      navigate("/")
+      navigate("/signIn")
     }
   }
   let { quizId } = useParams();

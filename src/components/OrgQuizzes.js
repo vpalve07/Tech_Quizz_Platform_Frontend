@@ -40,7 +40,7 @@ function QuizData() {
 
     useEffect(() => {
         if (!token) {
-            navigate('/', { replace: true });
+            navigate('/signIn', { replace: true });
         }
     }, [token]);
 
@@ -63,7 +63,7 @@ function QuizData() {
         if (localStorage.getItem('token') !== null) {
             localStorage.removeItem('token');
             localStorage.removeItem('quizId');
-            navigate("/")
+            navigate("/signIn")
             setIsLoggedIn(false);
         }
     }
@@ -94,10 +94,10 @@ function QuizData() {
                                 {quizData.map((item, index) => (
                                     <TableRow key={index}>
                                         <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>
-                                            <Button onClick={() => handleUpdate(item._id)}>Update</Button>
+                                            <Button style={{ backgroundColor: '#007bff', color: 'white' }} onClick={() => handleUpdate(item._id)}>Update</Button>
                                         </TableCell>
                                         <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>
-                                            <Button onClick={() => handleAddQuestion(item._id)}>AddQue/ActivateQuiz</Button>
+                                            <Button style={{ backgroundColor: '#007bff', color: 'white' }} onClick={() => handleAddQuestion(item._id)}>AddQue/ActivateQuiz</Button>
                                         </TableCell>
                                         <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.isActive ? 'Active' : 'Inactive'}</TableCell>
                                         <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.quizName}</TableCell>
@@ -106,7 +106,7 @@ function QuizData() {
                                         <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.topicTags.join(', ')}</TableCell>
                                         <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>{item.totalScore}</TableCell>
                                         <TableCell style={{ padding: '5px', fontSize: '14px', textAlign: 'center' }}>
-                                            <Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button>
+                                            <Button style={{ backgroundColor: '#007bff', color: 'white' }} onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button>
                                         </TableCell>
                                     </TableRow>
                                 ))}

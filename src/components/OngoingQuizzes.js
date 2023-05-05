@@ -18,10 +18,17 @@ function QuizData() {
     const [propData, setPropData] = React.useState("")
     const [error, setError] = useState(null);
     const [quizData, setQuizData] = useState([]);
+    const token = localStorage.getItem('token');
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/signIn', { replace: true });
+        }
+    }, [token]);
+
+    useEffect(() => {
+        
         const fetchQuizData = async () => {
             try {
                 const response = await axios.get(BACKEND_URL, {
@@ -39,7 +46,7 @@ function QuizData() {
         fetchQuizData();
     }, []);
 
-    const handleLeaderboard = (quizId) =>{
+    const handleLeaderboard = (quizId) => {
         navigate(`/leaderboard/${quizId}`)
     }
     const handleRegistration = async (quizId) => {
@@ -54,7 +61,7 @@ function QuizData() {
             });
             const state = { propData: response.data }
             console.log(response.data);
-            localStorage.setItem('quizId',quizId);
+            localStorage.setItem('quizId', quizId);
             navigate(`/startQuiz`, { state });
         } catch (error) {
             console.error(error);
@@ -72,7 +79,7 @@ function QuizData() {
                             <Alert severity="error">{error.response.data.message || 'An unknown error occurred'}</Alert>
                         )}
                     </Box>
-                    <h1>QuizData</h1><br />
+                    <h1>Ongoing Quizzes</h1><br />
                     {quizData.length > 0 ? (
                         <Table>
                             <TableHead>
@@ -94,8 +101,17 @@ function QuizData() {
                                         <TableCell style={{ textAlign: 'center' }}>{item.timeLimit}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>{item.topicTags.join(', ')}</TableCell>
                                         <TableCell style={{ textAlign: 'center' }}>{item.totalScore}</TableCell>
-                                        <TableCell style={{ textAlign: 'center' }}><Button onClick={() => handleRegistration(item._id)}>Register</Button></TableCell>
-                                        <TableCell style={{ textAlign: 'center' }}><Button onClick={() => handleLeaderboard(item._id)}>Leaderboard</Button></TableCell>
+                                        <TableCell style={{ textAlign: 'center' }}>
+                                            <Button onClick={() => handleRegistration(item._id)} style={{ backgroundColor: '#007bff', color: '#fff' }}>
+                                                Register
+                                            </Button>
+                                        </TableCell>
+                                        <TableCell style={{ textAlign: 'center' }}>
+                                            <Button onClick={() => handleLeaderboard(item._id)} style={{ backgroundColor: '#007bff', color: '#fff' }}>
+                                                Leaderboard
+                                            </Button>
+                                        </TableCell>
+
                                     </TableRow>
                                 ))}
                             </TableBody>

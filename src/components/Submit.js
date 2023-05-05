@@ -22,7 +22,7 @@ function Submit() {
     const quizId = localStorage.getItem("quizId");
     const fetchLeaderboardData = async () => {
       if (!token) {
-        navigate("/", { replace: true });
+        navigate("/signIn", { replace: true });
       }
       try {
         const response = await axios.get(
@@ -46,7 +46,7 @@ function Submit() {
       localStorage.removeItem("token");
       localStorage.removeItem("quizId");
       localStorage.removeItem('userData');
-      navigate("/");
+      navigate("/signIn");
       setIsLoggedIn(false);
     }
   }

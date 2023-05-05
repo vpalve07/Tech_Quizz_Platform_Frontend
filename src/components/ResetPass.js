@@ -34,7 +34,7 @@ export default function ResetPassword() {
     try {
       const response = await axios.post(BACKEND_URL, { email, secretQuestion, answer, newPassword });
       // console.log(response.data);
-      navigate('/',{replace:true});
+      navigate('/signIn',{replace:true});
     } catch (error) {
       console.error(error);
       setError(error);

@@ -19,7 +19,7 @@ export default function RegQuiz() {
 
   useEffect(() => {
     if (!token) {
-      navigate('/', { replace: true });
+      navigate('/signIn', { replace: true });
     }
   }, [token, navigate]);
 
@@ -28,7 +28,7 @@ export default function RegQuiz() {
       localStorage.removeItem('token');
       localStorage.removeItem('quizId');
       localStorage.removeItem('userData');
-      navigate('/');
+      navigate('/signIn');
       setIsLoggedIn(false);
     }
   }

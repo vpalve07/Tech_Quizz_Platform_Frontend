@@ -8,11 +8,23 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { useNavigate } from 'react-router-dom';
 
 const BACKEND_URL = 'https://tech-quizz-platform.onrender.com/userQuizzes';
 
 function QuizData() {
   const [quizData, setQuizData] = useState([]);
+  const token = localStorage.getItem('token');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/signIn', { replace: true });
+    } else {
+      setIsLoggedIn(true);
+    }
+  }, [token]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -37,7 +49,7 @@ function QuizData() {
         <Paper style={{ padding: '20px', margin: '20px 0' }}>
           <Box display="flex" justifyContent="flex-end">
           </Box>
-          <h1>My Quizzes</h1><br />
+          <h1>Taken quizzes</h1><br />
           {quizData.length > 0 ? (
             <Table>
               <TableHead>

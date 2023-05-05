@@ -45,7 +45,7 @@ export default function SignUp() {
     try {
       const response = await axios.post(BACKEND_URL, { name, email, password, type, secretQuestion });
       console.log(response.data);
-      navigate('/');
+      navigate('/signIn');
     } catch (error) {
       console.error(error);
       setError(error);
@@ -160,7 +160,7 @@ export default function SignUp() {
             )}
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/" variant="body2">
+                <Link to="/signIn" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

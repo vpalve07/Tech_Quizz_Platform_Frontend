@@ -20,7 +20,7 @@ export default function QuizQuestion() {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [completed, setCompleted] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(location.state.propData.time*60);
+  const [timeLeft, setTimeLeft] = useState(location.state.propData.time * 60);
   const token = localStorage.getItem('token');
   const quizId = localStorage.getItem('quizId');
   const BACKEND_URL = `https://tech-quizz-platform.onrender.com/question/${quizId}?page=${page}`;
@@ -28,7 +28,7 @@ export default function QuizQuestion() {
 
   useEffect(() => {
     if (!token) {
-      navigate('/', { replace: true });
+      navigate('/signIn', { replace: true });
     }
   }, [token, navigate]);
 
@@ -36,7 +36,7 @@ export default function QuizQuestion() {
     localStorage.removeItem('token');
     localStorage.removeItem('quizId');
     localStorage.removeItem('userData');
-    navigate('/');
+    navigate('/signIn');
     setIsLoggedIn(false);
   }
 
@@ -79,9 +79,9 @@ export default function QuizQuestion() {
             }
 
           });
-        if(response.data.timer<=0){
+        if (response.data.timer <= 0) {
           let state = { propData: response.data }
-          navigate("/submit",{state})
+          navigate("/submit", { state })
         }
         if (response.data.message == "Quiz completed") {
           setCompleted(true)
@@ -131,7 +131,7 @@ export default function QuizQuestion() {
       submitQuiz();
     }
   }, [timeLeft, BACKEND_URL2, navigate, token]);
-  
+
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
@@ -166,9 +166,12 @@ export default function QuizQuestion() {
             width: '100%',
           }}
         >
-          <div>
-      {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-    </div>
+          Time Left
+          <div style={{ fontSize: "40px", color: "red" }}>
+            {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+          </div>
+
+
           <TextField
             id="question"
             variant="filled"

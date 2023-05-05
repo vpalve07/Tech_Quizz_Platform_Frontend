@@ -23,7 +23,7 @@ function Leaderboard() {
     const token = localStorage.getItem("token");
     const fetchLeaderboardData = async () => {
       if (!token) {
-        navigate('/', { replace: true });
+        navigate('/signIn', { replace: true });
       }
       try {
         const response = await axios.get(`${BACKEND_URL}/leaderboard/${quizId}`, {
@@ -45,7 +45,7 @@ function Leaderboard() {
       localStorage.removeItem('token');
       localStorage.removeItem('quizId');
       localStorage.removeItem('userData');
-      navigate("/")
+      navigate("/signIn")
       setIsLoggedIn(false); 
     }
   }

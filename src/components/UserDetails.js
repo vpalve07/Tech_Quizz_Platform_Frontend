@@ -19,6 +19,13 @@ export default function App() {
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
   let userData = localStorage.getItem('userData')
+  useEffect(() => {
+    if (!token) {
+      navigate('/signIn', { replace: true });
+    } else {
+      setIsLoggedIn(true);
+    }
+  }, [token]);
   const user = {
     name: JSON.parse(userData).name,
     email: JSON.parse(userData).email,
@@ -26,13 +33,7 @@ export default function App() {
   };
 
   
-useEffect(() => {
-    if (!token) {
-      navigate('/', { replace: true });
-    } else {
-      setIsLoggedIn(true);
-    }
-  }, [token]);
+
   
   function handleLogout() {
     if (localStorage.getItem('token') !== null) {
@@ -40,7 +41,7 @@ useEffect(() => {
       localStorage.removeItem('quizId');
       localStorage.removeItem('userData');
       setIsLoggedIn(false); 
-      navigate("/")
+      navigate("/signIn")
     }
   }
 

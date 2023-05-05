@@ -19,6 +19,9 @@ import StartQuiz from "./components/StartQuiz"
 import Submit from "./components/Submit"
 import Navbar from "./components/Navbar"
 import UserDetails from "./components/UserDetails"
+import Home from "./components/Home"
+import About from "./components/About"
+import Contact from "./components/Contact"
 
 import { useState } from "react";
 
@@ -31,13 +34,6 @@ function App() {
     if (isCorrect) {
       setScore(score + 1);
     }
-
-    // const nextQuestion = currentQuestion + 1;
-    // if (nextQuestion < questions.length) {
-    //   setCurrentQuestion(nextQuestion);
-    // } else {
-    //   setShowScore(true);
-    // }
   };
 
   return (
@@ -46,7 +42,7 @@ function App() {
           <Navbar/>
           <Routes>
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/" element={<SignIn />} />
+          <Route path="/signIn" element={<SignIn />} />
           <Route path="/forgotPass" element={<ForgetPass />} />
           <Route path="/resetPassword" element={<ResetPass />} />
           <Route path="/Dashboard" element={<Dashboard />} />
@@ -60,6 +56,9 @@ function App() {
           <Route path="/startQuiz" element={<StartQuiz />} />
           <Route path="/submit" element={<Submit />} />
           <Route path="/userDetails" element={<UserDetails />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="/quizQue/:quizId"
             element={<AddQuestions/>}
@@ -71,42 +70,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-// import React from "react";
-// import logo from './logo.svg';
-// import './App.css';
-// import {BrowserRouter,Routes,Route} from "react-router-dom";
-// import SignIn from './components/SignIn';
-// import SignUp from './components/SignUp';
-// import ForgetPass from './components/ForgetPass';
-// import ResetPass from './components/ResetPass';
-// import Dashboard from "./components/Dashboard";
-// import Quiz from "./components/Quiz";
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-    
-//       <div className="App">
-//         <br/>
-//         <br/>
-//         <Routes>
-//           <Route path ="/user" element={<SignUp/>}></Route>
-//           <Route path ="/" element={<SignIn/>}></Route>
-//           <Route path ="/Dashboard" element={<Dashboard/>}></Route>
-//           <Route path ="/forgotPass" element={<ForgetPass/>}></Route>
-//           <Route path ="/resetPassword" element={<ResetPass/>}></Route>
-//           <Route path ="/Quiz" element={<Quiz/>}></Route>
-  
-          
-//         </Routes>
-//       </div>
-//       </BrowserRouter>
-//   );
-// }
-
-// export default App;
